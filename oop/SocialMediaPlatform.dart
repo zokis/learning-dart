@@ -83,43 +83,43 @@ void main() {
     });
 
     test('Add User Test', () {
-      platform.addUser('Zokis');
-      expect(platform.getUsers(), ['Zokis']);
+      platform.addUser('Augusto');
+      expect(platform.getUsers(), ['Augusto']);
     });
 
     test('Post Message Test', () {
-      platform.addUser('Zokis');
-      platform.post('Zokis', 'Hello Dart!');
-      expect(platform.getPosts('Zokis'), ['Hello Dart!']);
+      platform.addUser('Augusto');
+      platform.post('Augusto', 'Hello Dart!');
+      expect(platform.getPosts('Augusto'), ['Hello Dart!']);
     });
 
     test('Follow User Test', () {
-      platform.addUser('Zokis');
-      platform.addUser('Ana');
-      platform.follow('Zokis', 'Ana');
-      expect(platform.getFollowers('Ana'), ['Zokis']);
+      platform.addUser('Augusto');
+      platform.addUser('Gelox');
+      platform.follow('Augusto', 'Gelox');
+      expect(platform.getFollowers('Gelox'), ['Augusto']);
     });
 
     test('Like Post Test', () {
-      platform.addUser('Zokis');
-      platform.post('Zokis', 'Hello Dart!');
-      platform.like('Zokis', 0);
-      expect(platform.getLikes('Zokis', 0), 1);
+      platform.addUser('Augusto');
+      platform.post('Augusto', 'Hello Dart!');
+      platform.like('Augusto', 0);
+      expect(platform.getLikes('Augusto', 0), 1);
     });
 
     test('Comment Post Test', () {
-      platform.addUser('Zokis');
-      platform.post('Zokis', 'Hello Dart!');
-      platform.comment('Zokis', 0, 'Nice post!');
-      expect(platform.getComments('Zokis', 0), ['Nice post!']);
+      platform.addUser('Augusto');
+      platform.post('Augusto', 'Hello Dart!');
+      platform.comment('Augusto', 0, 'Nice post!');
+      expect(platform.getComments('Augusto', 0), ['Nice post!']);
     });
 
     test('Display User Feed Test', () {
-      platform.addUser('Zokis');
-      platform.addUser('Ana');
-      platform.post('Zokis', 'Hello Dart!');
-      platform.follow('Ana', 'Zokis');
-      expect(platform.getFeed('Ana'), [{'user': 'Zokis', 'post': 'Hello Dart!'}]);
+      platform.addUser('Augusto');
+      platform.addUser('Gelox');
+      platform.post('Augusto', 'Hello Dart!');
+      platform.follow('Gelox', 'Augusto');
+      expect(platform.getFeed('Gelox'), [{'user': 'Augusto', 'post': 'Hello Dart!'}]);
     });
   });
 }
