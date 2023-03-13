@@ -146,10 +146,10 @@ Write a function that takes a list of strings as input and returns a new list wi
 ```dart
 void main() {
   test('Test list with strings longer than 5 characters', () {
-    expect(longStrings(["apple", "banana", "orange", "grape", "kiwi"]), equals(["banana", "orange"]));
-    expect(longStrings(["cat", "dog", "fish", "bird"]), equals([]));
+    expect(longStrings(["sagaz", "legado", "julgar", "amigo", "amor"]), equals(["legado", "julgar"]));
+    expect(longStrings(["ser", "bem", "luz", "apto"]), equals([]));
     expect(longStrings([]), equals([]));
-    expect(longStrings(["cherry", "pineapple", "watermelon"]), equals(["cherry", "pineapple", "watermelon"]));
+    expect(longStrings(["larica", "aleatório", "pertinente"]), equals(["larica", "aleatório", "pertinente"]));
   });
 }
 ```
