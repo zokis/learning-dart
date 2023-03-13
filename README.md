@@ -670,6 +670,82 @@ Write tests to verify the following functionality of the Stack class:
 - Retrieving the top element of the stack without removing it with the peek method
 - Sorting the elements in ascending or descending order with the sort method, and verifying that the elements are returned in the correct order after sorting.
 
+```dart
+void main() {
+  group('Stack tests', () {
+    late Stack stack;
+
+    setUp(() {
+      stack = Stack();
+    });
+
+    test('push adds an element to the top of the stack', () {
+      stack.push(1);
+      stack.push(2);
+      stack.push(3);
+
+      expect(stack.peek(), equals(3));
+    });
+
+    test('pop removes and returns the top element from the stack', () {
+      stack.push(1);
+      stack.push(2);
+      stack.push(3);
+
+      expect(stack.pop(), equals(3));
+      expect(stack.pop(), equals(2));
+      expect(stack.pop(), equals(1));
+    });
+
+    test('pop throws an exception when stack is empty', () {
+      expect(() => stack.pop(), throwsException);
+    });
+
+    test('peek returns the top element without removing it', () {
+      stack.push(1);
+      stack.push(2);
+      stack.push(3);
+
+      expect(stack.peek(), equals(3));
+      expect(stack.peek(), equals(3));
+    });
+
+    test('isEmpty returns true when stack is empty', () {
+      expect(stack.isEmpty(), isTrue);
+    });
+
+    test('isEmpty returns false when stack is not empty', () {
+      stack.push(1);
+
+      expect(stack.isEmpty(), isFalse);
+    });
+
+    test('reverse sort stack', () {
+      stack.push(5);
+      stack.push(1);
+      stack.push(7);
+      stack.push(3);
+      stack.sort(true);
+      expect(stack.pop(), equals(7));
+      expect(stack.pop(), equals(5));
+      expect(stack.pop(), equals(3));
+      expect(stack.pop(), equals(1));
+    });
+
+    test('sort stack', () {
+      stack.push(5);
+      stack.push(1);
+      stack.push(7);
+      stack.push(3);
+      stack.sort();
+      expect(stack.pop(), equals(1));
+      expect(stack.pop(), equals(3));
+      expect(stack.pop(), equals(5));
+      expect(stack.pop(), equals(7));
+    });
+  });
+}
+```
 
 ### Game of life
 
