@@ -85,35 +85,144 @@ void main() {
 ### Exercise 1:
 Write a function that takes a list of integers as input and returns a new list with only the even numbers from the original list.
 
+```dart
+void main() {
+  test('Test list with even numbers', () {
+    expect(evenNumbers([1, 2, 3, 4, 5, 6]), equals([2, 4, 6]));
+    expect(evenNumbers([2, 4, 6, 8, 10]), equals([2, 4, 6, 8, 10]));
+    expect(evenNumbers([1, 3, 5, 7, 9]), equals([]));
+    expect(evenNumbers([0, 1, 2, 3, 4]), equals([0, 2, 4]));
+  });
+}
+```
+
 ### Exercise 2:
 Write a function that takes two lists of integers as input and returns a new list with only the common numbers between them.
-
+```dart
+void main() {
+  test('Test list with common numbers', () {
+    expect(commonNumbers([1, 2, 3, 4, 5, 6], [4, 5, 6, 7, 8]), equals([4, 5, 6]));
+    expect(commonNumbers([10, 20, 30, 40], [40, 30, 20, 10]), equals([10, 20, 30, 40]));
+    expect(commonNumbers([1, 2, 3], [4, 5, 6]), equals([]));
+    expect(commonNumbers([1, 1, 2, 3, 4], [1, 4, 5]), equals([1, 4]));
+    expect(commonNumbers([1, 1, 2, 2, 3, 4], [1, 4, 5]), equals([1, 4]));
+    expect(commonNumbers([1, 2, 3], [3, 4, 5, 6, 3]), equals([3]));
+  });
+}
+```
 ### Exercise 3:
 Write a function that takes a list of integers as input and returns the largest number in the list.
+```dart
 
+```
 ### Exercise 4:
 Write a function that takes a list of strings as input and returns a new list with only the strings that have more than 5 characters.
-
+```dart
+void main() {
+  test('Test list with strings longer than 5 characters', () {
+    expect(longStrings(["apple", "banana", "orange", "grape", "kiwi"]), equals(["banana", "orange"]));
+    expect(longStrings(["cat", "dog", "fish", "bird"]), equals([]));
+    expect(longStrings([]), equals([]));
+    expect(longStrings(["cherry", "pineapple", "watermelon"]), equals(["cherry", "pineapple", "watermelon"]));
+  });
+}
+```
 ### Exercise 5:
 Write a function that takes a list of integers as input and returns the second smallest number in the list.
-
+```dart
+void main() {
+  test('Test second smallest number in list', () {
+    expect(secondSmallestNumber([11, 21, 31, 14, 51, 61]), equals(14));
+    expect(secondSmallestNumber([1, 2, 3, 4, 5, 6]), equals(2));
+    expect(secondSmallestNumber([10, 20, 30, 40, 50]), equals(20));
+    expect(secondSmallestNumber([1]), equals(null));
+    expect(secondSmallestNumber([]), equals(null));
+    expect(secondSmallestNumber([-1, -2, -3]), equals(-2));
+    expect(secondSmallestNumber([1, 1, 2, 3, 4]), equals(1));
+  });
+}
+```
 ## maps
 
 ### Exercise 1:
 Write a function that takes two maps as input and returns a new map with all the key-value pairs from both maps, with the values of overlapping keys from the second map taking precedence.
-
+```dart
+void main() {
+  test('Test merging two maps with overlapping keys', () {
+    expect(mergeMaps({"Daniel": 23, "Ronaldo": 17, "Clara": 32}, {"Cave": 19, "Ronaldo": 21}), equals({"Daniel": 23, "Ronaldo": 21, "Clara": 32, "Cave": 19}));
+    expect(mergeMaps({"Erle": 16}, {"Toretinho": 21, "Amanda": 18}), equals({"Erle": 16, "Toretinho": 21, "Amanda": 18}));
+    expect(mergeMaps({}, {}), equals({}));
+  });
+}
+```
 ### Exercise 2:
 Write a function that takes a map of names and email addresses as input and returns a new map with the email addresses as the keys and the names as the values.
-
+```dart
+void main() {
+  test('Test map with email addresses as keys and names as values', () {
+    expect(
+    	mapEmailsToNames(
+    		{"Iuri": "iuri@example.com", "Dantas": "dantas@example.com", "Murillo": "murillo@example.com"}
+    	),
+    	equals(
+    		{"iuri@example.com": "Iuri", "dantas@example.com": "Dantas", "murillo@example.com": "Murillo"}
+    	)
+    );
+    expect(mapEmailsToNames({"Gabriel": "gabriel@example.com"}), equals({"gabriel@example.com": "Gabriel"}));
+    expect(mapEmailsToNames({}), equals({}));
+  });
+}
+```
 ### Exercise 3:
 Write a function that takes a list of maps, where each map contains the name and age of a person, and returns a new map with the average age for each name.
-
+```dart
+void main() {
+  test('Test map with average age for each name', () {
+    expect(averageAgePerName([{"name": "Marcelo", "age": 23}, {"name": "Eduardo", "age": 17}, {"name": "Ugo", "age": 32}, {"name": "Cave", "age": 19}]), equals({"Marcelo": 23.0, "Eduardo": 17.0, "Ugo": 32.0, "Cave": 19.0}));
+    expect(averageAgePerName([{"name": "Laura", "age": 16}, {"name": "Toretinho", "age": 21}, {"name": "Chris", "age": 18}, {"name": "David", "age": 20}, {"name": "Laura", "age": 18}]), equals({"Laura": 17.0, "Toretinho": 21.0, "Chris": 18.0, "David": 20.0}));
+    expect(averageAgePerName([]), equals({}));
+    expect(averageAgePerName([
+    	{"name": "Laura", "age": 66},
+    	{"name": "Laura", "age": 10},
+    	{"name": "Laura", "age": 25},
+    	{"name": "Laura", "age": 13},
+    ]), equals({"Laura": (66.0 + 10.0 + 25.0 + 13.0) / 4}));
+  });
+}
+```
 ### Exercise 4:
 Write a function that takes a map of names and scores as input and returns the name of the person with the highest score.
-
+```dart
+void main() {
+  test('Test map with highest score', () {
+    expect(highestScorer({"Alice": 85, "Bruno": 73, "Djamila": 92, "Dave": 87}), equals("Djamila"));
+    expect(highestScorer({"Amanda": 94, "Lúcia": 89, "Chris": 91}), equals("Amanda"));
+    expect(highestScorer({}), equals(null));
+  });
+}
+```
 ### Exercise 5:
 Write a function that takes a list of maps, where each map contains the name, age, and gender of a person, and returns a new map with the number of people of each gender.
-
+```dart
+void main() {
+  test('Test map with number of people of each gender', () {
+    expect(
+    	countPeopleByGender([
+    		{"name": "Clara", "age": 23, "gender": "female"},
+    		{"name": "Caio", "age": 17, "gender": "male"},
+    		{"name": "Erle", "age": 32, "gender": "male"},
+    		{"name": "Victor", "age": 19, "gender": "male"}
+    	]), equals({"female": 1, "male": 3})
+    );
+    expect(
+    	countPeopleByGender([
+    		{"name": "Marílha", "age": 16, "gender": "female"}
+    	]), equals({"female": 1, "male": 0})
+    );
+    expect(countPeopleByGender([]), equals({"female": 0, "male": 0}));
+  });
+}
+```
 ## object oriented programming
 
 ### Exercise 1:
@@ -337,43 +446,43 @@ void main() {
     });
 
     test('Add User Test', () {
-      platform.addUser('JohnDoe');
-      expect(platform.getUsers(), ['JohnDoe']);
+      platform.addUser('Augusto');
+      expect(platform.getUsers(), ['Augusto']);
     });
 
     test('Post Message Test', () {
-      platform.addUser('JohnDoe');
-      platform.post('JohnDoe', 'Hello World');
-      expect(platform.getPosts('JohnDoe'), ['Hello World']);
+      platform.addUser('Augusto');
+      platform.post('Augusto', 'Hello World');
+      expect(platform.getPosts('Augusto'), ['Hello World']);
     });
 
     test('Follow User Test', () {
-      platform.addUser('JohnDoe');
-      platform.addUser('JaneDoe');
-      platform.follow('JohnDoe', 'JaneDoe');
-      expect(platform.getFollowers('JaneDoe'), ['JohnDoe']);
+      platform.addUser('Augusto');
+      platform.addUser('Gelox');
+      platform.follow('Augusto', 'Gelox');
+      expect(platform.getFollowers('Gelox'), ['Augusto']);
     });
 
     test('Like Post Test', () {
-      platform.addUser('JohnDoe');
-      platform.post('JohnDoe', 'Hello World');
-      platform.like('JohnDoe', 0);
-      expect(platform.getLikes('JohnDoe', 0), 1);
+      platform.addUser('Augusto');
+      platform.post('Augusto', 'Hello World');
+      platform.like('Augusto', 0);
+      expect(platform.getLikes('Augusto', 0), 1);
     });
 
     test('Comment Post Test', () {
-      platform.addUser('JohnDoe');
-      platform.post('JohnDoe', 'Hello World');
-      platform.comment('JohnDoe', 0, 'Nice post!');
-      expect(platform.getComments('JohnDoe', 0), ['Nice post!']);
+      platform.addUser('Augusto');
+      platform.post('Augusto', 'Hello World');
+      platform.comment('Augusto', 0, 'Nice post!');
+      expect(platform.getComments('Augusto', 0), ['Nice post!']);
     });
 
     test('Display User Feed Test', () {
-      platform.addUser('JohnDoe');
-      platform.addUser('JaneDoe');
-      platform.post('JohnDoe', 'Hello World');
-      platform.follow('JaneDoe', 'JohnDoe');
-      expect(platform.getFeed('JaneDoe'), [{'user': 'JohnDoe', 'post': 'Hello World'}]);
+      platform.addUser('Augusto');
+      platform.addUser('Gelox');
+      platform.post('Augusto', 'Hello World');
+      platform.follow('Gelox', 'Augusto');
+      expect(platform.getFeed('Gelox'), [{'user': 'Augusto', 'post': 'Hello World'}]);
     });
   });
 }
