@@ -11,14 +11,14 @@ Map<String?, String> mapEmailsToNames(Map<String, String> map) {
 void main() {
   test('Test map with email addresses as keys and names as values', () {
     expect(
-    	mapEmailsToNames(
-    		{"Alice": "alice@example.com", "Bob": "bob@example.com", "Charlie": "charlie@example.com"}
-    	),
-    	equals(
-    		{"alice@example.com": "Alice", "bob@example.com": "Bob", "charlie@example.com": "Charlie"}
-    	)
+        mapEmailsToNames(
+            {"Iuri": "iuri@example.com", "Dantas": "dantas@example.com", "Murillo": "murillo@example.com"}
+        ),
+        equals(
+            {"iuri@example.com": "Iuri", "dantas@example.com": "Dantas", "murillo@example.com": "Murillo"}
+        )
     );
-    expect(mapEmailsToNames({"Amy": "amy@example.com"}), equals({"amy@example.com": "Amy"}));
+    expect(mapEmailsToNames({"Gabriel": "gabriel@example.com"}), equals({"gabriel@example.com": "Gabriel"}));
     expect(mapEmailsToNames({}), equals({}));
   });
 }

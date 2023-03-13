@@ -14,8 +14,8 @@ Map<String, int?> mergeMaps(Map<String, int> map1, map2) {
 
 void main() {
   test('Test merging two maps with overlapping keys', () {
-    expect(mergeMaps({"Alice": 23, "Bob": 17, "Charlie": 32}, {"Dave": 19, "Bob": 21}), equals({"Alice": 23, "Bob": 21, "Charlie": 32, "Dave": 19}));
-    expect(mergeMaps({"Amy": 16}, {"Ben": 21, "Chris": 18}), equals({"Amy": 16, "Ben": 21, "Chris": 18}));
+    expect(mergeMaps({"Daniel": 23, "Ronaldo": 17, "Clara": 32}, {"Cave": 19, "Ronaldo": 21}), equals({"Daniel": 23, "Ronaldo": 21, "Clara": 32, "Cave": 19}));
+    expect(mergeMaps({"Erle": 16}, {"Toretinho": 21, "Amanda": 18}), equals({"Erle": 16, "Toretinho": 21, "Amanda": 18}));
     expect(mergeMaps({}, {}), equals({}));
   });
 }

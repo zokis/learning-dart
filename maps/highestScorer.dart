@@ -13,8 +13,7 @@ String? highestScorer(Map<String, int> scores) {
 
 void main() {
   test('Test map with highest score', () {
-    expect(highestScorer({"Alice": 85, "Bob": 73, "Charlie": 92, "Dave": 87}), equals("Charlie"));
-    expect(highestScorer({"Amy": 94, "Ben": 89, "Chris": 91}), equals("Amy"));
+    expect(highestScorer({"Alice": 85, "Bruno": 73, "Djamila": 92, "Dave": 87}), equals("Djamila"));
+    expect(highestScorer({"Amanda": 94, "Lúcia": 89, "Chris": 91}), equals("Amanda"));
     expect(highestScorer({}), equals(null));
   });
-}
