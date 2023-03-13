@@ -655,6 +655,8 @@ void main() {
 
 ## challanges
 
+### Stack
+
 Implement a class for a Stack data structure with methods for adding and removing elements from the top of the stack, checking if the stack is empty, and sorting the elements in ascending or descending order. The Stack class should have a private top node, which holds the current top element of the stack.
 
 The Stack class should also have a Node class, which represents a single node in the stack, with an integer value and a reference to the next node.
@@ -667,3 +669,167 @@ Write tests to verify the following functionality of the Stack class:
 - Checking if the stack is empty with the isEmpty method
 - Retrieving the top element of the stack without removing it with the peek method
 - Sorting the elements in ascending or descending order with the sort method, and verifying that the elements are returned in the correct order after sorting.
+
+
+### Game of life
+
+```dart
+void main() {
+  group('Game of Life', () {
+    test('empty grid should stay empty', () {
+      final grid = [
+        [false, false, false],
+        [false, false, false],
+        [false, false, false],
+      ];
+      final game = GameOfLife(grid);
+      game.tick();
+      expect(game.grid, equals(grid));
+    });
+
+    test('blinker should oscillate', () {
+      final grid = [
+        [false, true, false],
+        [false, true, false],
+        [false, true, false],
+      ];
+      final expected = [
+        [false, false, false],
+        [true, true, true],
+        [false, false, false],
+      ];
+      final game = GameOfLife(grid);
+      game.tick();
+      expect(game.grid, equals(expected));
+      game.tick();
+      expect(game.grid, equals(grid));
+    });
+
+    test('glider should move diagonally', () {
+      final grid = [
+        [false, false, true],
+        [true, false, true],
+        [false, true, true],
+      ];
+      final expected1 = [
+        [false, true, false],
+        [false, false, true],
+        [false, true, true],
+      ];
+      final expected2 = [
+        [false, false, false],
+        [false, false, true],
+        [false, true, true],
+      ];
+      final game = GameOfLife(grid);
+      game.tick();
+      expect(game.grid, equals(expected1));
+      game.tick();
+      expect(game.grid, equals(expected2));
+    });
+  });
+
+  test('should count 8 neighbors for middle cell', () {
+    final grid = [
+      [true, true, true],
+      [true, false, true],
+      [true, true, true],
+    ];
+    final game = GameOfLife(grid);
+    final count = game._countNeighbors(1, 1);
+    expect(count, equals(8));
+  });
+
+  test('should count 3 neighbors for corner cell', () {
+    final grid = [
+      [false, true, false],
+      [true, true, false],
+      [false, false, false],
+    ];
+    final game = GameOfLife(grid);
+    final count = game._countNeighbors(0, 0);
+    expect(count, equals(3));
+  });
+
+  test('should count 1 neighbors for edge cell', () {
+    final grid = [
+      [false, false, false],
+      [false, true, false],
+      [false, false, false],
+    ];
+    final game = GameOfLife(grid);
+    final count = game._countNeighbors(0, 2);
+    expect(count, equals(1));
+  });
+  test('should correctly handle empty grid', () {
+    final grid = [
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+    ];
+    final expected = [
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+    ];
+    final game = GameOfLife(grid);
+    game.tick();
+    expect(game.grid, equals(expected));
+  });
+  test('should correctly update blinker pattern', () {
+    final grid = [
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, false, true, false, false, false, false, false],
+      [false, false, true, false, false, false, false, false],
+      [false, false, true, false, false, false, false, false],
+    ];
+    final expected = [
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, true, true, true, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+    ];
+    final game = GameOfLife(grid);
+    game.tick();
+    expect(game.grid, equals(expected));
+  });
+  test('should correctly update glider pattern', () {
+    final grid = [
+      [false, false, false, false, false, false, false, false],
+      [false, false, true, false, false, false, false, false],
+      [false, false, false, true, false, false, false, false],
+      [false, true, true, true, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+    ];
+    final expected =  [
+      [false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false],
+      [false, true, false, true, false, false, false, false],
+      [false, false, true, true, false, false, false, false],
+      [false, false, true, false, false, false, false, false]
+    ];
+    final game = GameOfLife(grid);
+    game.tick();
+    expect(game.grid, equals(expected));
+  });
+  // final grid = [
+  //   [false, false, false, false, false, false, false, false],
+  //   [false, false, true, true, true, false, false, false],
+  //   [false, false, false, true, false, false, false, true],
+  //   [false, true, true, true, false, false, true, false],
+  //   [false, false, false, false, false, false, false, true],
+  // ];
+  // final game = GameOfLife(grid);
+  // for(int i =0; i <= 10; i++){
+  //   game.tick();
+  //   print("$i -----------------");
+  //   game.displayGrid();
+  // }
+}
+```
