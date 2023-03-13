@@ -652,3 +652,18 @@ void main() {
   });
 }
 ```
+
+## challanges
+
+Implement a class for a Stack data structure with methods for adding and removing elements from the top of the stack, checking if the stack is empty, and sorting the elements in ascending or descending order. The Stack class should have a private top node, which holds the current top element of the stack.
+
+The Stack class should also have a Node class, which represents a single node in the stack, with an integer value and a reference to the next node.
+
+Write tests to verify the following functionality of the Stack class:
+
+- Adding elements to the top of the stack with the push method
+- Removing elements from the top of the stack with the pop method, and verifying the correct element is returned
+- Throwing an exception when attempting to pop from an empty stack
+- Checking if the stack is empty with the isEmpty method
+- Retrieving the top element of the stack without removing it with the peek method
+- Sorting the elements in ascending or descending order with the sort method, and verifying that the elements are returned in the correct order after sorting.
