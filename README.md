@@ -113,7 +113,33 @@ void main() {
 ### Exercise 3:
 Write a function that takes a list of integers as input and returns the largest number in the list.
 ```dart
+void main() {
+  group('findLargestNumber', () {
+    test('returns the largest number in a list of positive integers', () {
+      final list = [1, 3, 2, 5, 4];
+      final result = findLargestNumber(list);
+      expect(result, equals(5));
+    });
 
+    test('returns the largest number in a list of negative integers', () {
+      final list = [-1, -3, -2, -5, -4];
+      final result = findLargestNumber(list);
+      expect(result, equals(-1));
+    });
+
+    test('returns the largest number in a list with a single element', () {
+      final list = [42];
+      final result = findLargestNumber(list);
+      expect(result, equals(42));
+    });
+
+    test('returns null if the list is empty', () {
+      final list = [];
+      final result = findLargestNumber(list);
+      expect(result, isNull);
+    });
+  });
+}
 ```
 ### Exercise 4:
 Write a function that takes a list of strings as input and returns a new list with only the strings that have more than 5 characters.
