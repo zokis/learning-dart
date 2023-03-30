@@ -17,3 +17,4 @@ void main() {
     expect(highestScorer({"Amanda": 94, "Lúcia": 89, "Chris": 91}), equals("Amanda"));
     expect(highestScorer({}), equals(null));
   });
+}

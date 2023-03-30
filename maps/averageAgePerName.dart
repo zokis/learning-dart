@@ -9,7 +9,6 @@ Map<String?, double> averageAgePerName(List<Map<String, dynamic>> maps) {
 		if(newMap.containsKey(name)){
 			newMap[name] = age.toDouble() + (newMap[name] ?? 0);
 			countNames[name] = (countNames[name] ?? 0) + 1;
-			
 		} else {
 			newMap[name] = age.toDouble();
 			countNames[name] = 1;

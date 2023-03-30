@@ -100,8 +100,7 @@ class Transaction {
   final String description;
   final double amount;
 
-  Transaction(this.description, this.amount)
-      : dateTime = DateTime.now();
+  Transaction(this.description, this.amount) : dateTime = DateTime.now();
 
   @override
   String toString() {
